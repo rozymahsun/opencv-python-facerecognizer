@@ -16,4 +16,5 @@ if userid != None:
   os.chdir(mypath)
   filelist = glob.glob(patern)
   for f in filelist:
-    os.remove(f) 
+  	print(f)
+    #os.remove(f) 

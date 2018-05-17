@@ -1,4 +1,18 @@
 import sqlite3
+import os
+import glob
+
+mypath = 'dataset'
+userid = None
+
+patern = "*.*"
+os.chdir(mypath)
+filelist = glob.glob(patern)
+for f in filelist:
+	print('Removing ',f,' ....')
+	os.remove(f) 
+
+os.chdir('..')
 conn = sqlite3.connect('database.db')
 c = conn.cursor()
 sql1 = """
@@ -18,6 +32,7 @@ CREATE TABLE attendance (
 );
 """
 
+c.executescript(sql1)
 c.executescript(sql2)
 conn.commit()
 conn.close()
